@@ -5,7 +5,7 @@
 #ifndef MINILOG_SINK_H
 #define MINILOG_SINK_H
 
-#include "Detail.h"
+#include "details/LogMsg.h"
 
 namespace MiniLog {
     // TODO:: now we only have one sink and make it as a singleton
@@ -30,12 +30,8 @@ namespace MiniLog {
         }
 
     public:
-        template<class T>
-        requires Detail::StringLike<T>
-        void log(const T &message) {
-            auto timestamp = Detail::get_current_time();
-            auto log_message = timestamp + " " + std::string(message);
-            fprintf(file_, "%s\n", log_message.c_str());
+        void log(const details::LogMsg &message) {
+            fprintf(file_, "%s\n", message.get_str_msg().c_str());
             ::fflush(file_); // flush every line to terminal
         }
 

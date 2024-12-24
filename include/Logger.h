@@ -2,7 +2,7 @@
 #define MINILOG_LOGGER_H
 
 #include "Sink.h"
-#include "Detail.h"
+#include "details/LogMsg.h"
 
 namespace MiniLog {
     // TODO:: now we only have one logger and make it as a singleton
@@ -28,10 +28,15 @@ namespace MiniLog {
 
     public:
         template<class T>
-        requires Detail::StringLike<T>
         void log(const T &message) {
-            auto &sink = Sink::get_instance();
-            sink.log(message);
+            log_aux(message);
+        }
+
+    private:
+        // TODO:: now we assume that message is a string-like object
+        void log_aux(std::string_view message) {
+            auto log_msg = details::LogMsg(message);
+            Sink::get_instance().log(log_msg);
         }
     };
 }
