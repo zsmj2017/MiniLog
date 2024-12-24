@@ -46,9 +46,9 @@ Summary:
 
 
 TODO:
-1. 整理cmakelists，将测试文件和库文件分开
-2. 抽象msg类，否则后续无法做formatting，甚至连添加日志现场（src file info + func info）实现起来都很困难
-3. 当前log函数只支持string_like类型，需要扩展
+1. 抽象msg类，否则后续无法做formatting，甚至连添加日志现场（src file info + func info）实现起来都很困难
+2. 当前log函数只支持string_like类型，需要扩展
+3. 引入gtest，对当前代码进行单元测试
 
 
 

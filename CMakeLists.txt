@@ -11,8 +11,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-message(STATUS "Include directory: ${CMAKE_SOURCE_DIR}/include")
+add_library(minilog_header_only INTERFACE)
+add_library(MiniLog::minilog_header_only ALIAS minilog_header_only)
 
-add_executable(base-test tests/base-test/main.cpp)
+target_include_directories(minilog_header_only INTERFACE ${CMAKE_SOURCE_DIR}/include)
 
-target_include_directories(base-test PRIVATE ${CMAKE_SOURCE_DIR}/include)
+if (ENABLE_UT)
+    add_subdirectory(tests/base-test)
+endif()
