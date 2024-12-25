@@ -39,6 +39,6 @@ namespace MiniLog {
             Sink::get_instance().log(log_msg);
         }
     };
-}
+}// namespace MiniLog
 
-#endif //MINILOG_LOGGER_H
+#endif//MINILOG_LOGGER_H

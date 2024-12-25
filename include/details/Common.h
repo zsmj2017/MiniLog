@@ -5,10 +5,10 @@
 #ifndef MINILOG_COMMON_H
 #define MINILOG_COMMON_H
 
-#include <iostream>
 #include <chrono>
-#include <iomanip>
 #include <ctime>
+#include <iomanip>
+#include <iostream>
 #include <sstream>
 
 namespace MiniLog {
@@ -20,7 +20,7 @@ namespace MiniLog {
             oss << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S");
             return oss.str();
         }
-    }
-}
+    }// namespace Detail
+}// namespace MiniLog
 
-#endif //MINILOG_COMMON_H
+#endif//MINILOG_COMMON_H

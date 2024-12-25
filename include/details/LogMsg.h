@@ -5,8 +5,8 @@
 #ifndef MINILOG_LOGMSG_H
 #define MINILOG_LOGMSG_H
 
-#include <string_view>
 #include "Common.h"
+#include <string_view>
 
 namespace MiniLog {
     namespace details {
@@ -36,7 +36,7 @@ namespace MiniLog {
             std::chrono::system_clock::time_point log_time_;
             std::string_view payload_;
         };
-    }
-}
+    }// namespace details
+}// namespace MiniLog
 
-#endif //MINILOG_LOGMSG_H
+#endif//MINILOG_LOGMSG_H

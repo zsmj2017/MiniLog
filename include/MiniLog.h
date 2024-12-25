@@ -9,6 +9,6 @@ namespace MiniLog {
         auto &logger = Logger::get_instance();
         logger.log(message);
     }
-}
+}// namespace MiniLog
 
-#endif //MINILOG_MINILOG_H
+#endif//MINILOG_MINILOG_H

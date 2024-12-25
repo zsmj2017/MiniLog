@@ -32,14 +32,14 @@ namespace MiniLog {
     public:
         void log(const details::LogMsg &message) {
             fprintf(file_, "%s\n", message.get_str_msg().c_str());
-            ::fflush(file_); // flush every line to terminal
+            ::fflush(file_);// flush every line to terminal
         }
 
     private:
         FILE *file_ = stdout;
     };
 
-}
+}// namespace MiniLog
 
 
-#endif //MINILOG_SINK_H
+#endif//MINILOG_SINK_H
