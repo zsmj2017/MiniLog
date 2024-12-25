@@ -31,7 +31,7 @@ namespace MiniLog {
 
     public:
         void log(const details::LogMsg &message) {
-            fprintf(file_, "%s\n", message.get_str_msg().c_str());
+            fprintf(file_, "%s\n", message.get_str().c_str());
             ::fflush(file_);// flush every line to terminal
         }
 

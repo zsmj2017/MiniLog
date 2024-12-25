@@ -9,5 +9,7 @@ int main() {
 
     std::string_view sv = "sv Hello, World!";
     MiniLog::log(sv);
+
+    MINILOG("hello, world!");
     return 0;
 }
