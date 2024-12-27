@@ -38,10 +38,15 @@ namespace MiniLog {
             return *this;
         }
 
-    public:
+    public:// swap
         void swap(Logger &other) noexcept {
             std::swap(name_, other.name_);
             std::swap(sinks_, other.sinks_);
+        }
+
+    public:
+        const std::string &name() const {
+            return name_;
         }
 
     public:

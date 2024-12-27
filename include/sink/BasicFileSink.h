@@ -7,9 +7,9 @@
 #include "logger/LoggerRegister.h"
 
 namespace MiniLog {
-    class BasicFileSink : public SinkBase {
+    class BasicFileSink final : public SinkBase {
     public:
-        BasicFileSink(std::string filename) : filename_(std::move(filename)) {
+        explicit BasicFileSink(std::string filename) : filename_(std::move(filename)) {
             // write or create a file
             file_ = fopen(filename_.c_str(), "w");
             if (file_ == nullptr) {
@@ -17,18 +17,18 @@ namespace MiniLog {
             }
         }
 
-        virtual ~BasicFileSink() {
+        ~BasicFileSink() override {
             if (file_ != nullptr) {
                 fclose(file_);
             }
         }
 
-        virtual void log(const details::LogMsg &message) override {
+        void log(const details::LogMsg &message) override {
             fprintf(file_, "%s\n", message.get_str().c_str());
             fflush(file_);// TODO:: now we only support flush every line to file
         }
 
-        virtual void flush() override {
+        void flush() override {
             fflush(file_);
         }
 
@@ -39,8 +39,8 @@ namespace MiniLog {
 
     std::shared_ptr<Logger> create_file_logger(std::string logger_name, std::string filename) {
         auto sink = std::make_shared<BasicFileSink>(std::move(filename));
-        auto fileLogger = std::make_shared<Logger>(std::move(logger_name), std::move(sink));
-        LoggerRegister::get_instance().register_logger(logger_name, fileLogger);
+        auto fileLogger = std::make_shared<Logger>(logger_name, std::move(sink));
+        LoggerRegister::get_instance().register_logger(fileLogger);
         return fileLogger;
     }
 }// namespace MiniLog

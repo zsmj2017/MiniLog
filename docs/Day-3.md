@@ -6,11 +6,13 @@
 
 1. 支持多logger与多sink，为后续日志多目的地做准备
    新增注册机制，提供default logger
+2. 新增Basic File Sink
 
 ### 具体实现
 
 1. 新增`LoggerRegister`类，单例，用于管理所有logger
 2. 去除`Logger`和`Sink`的单例属性
+3. 新增`FileSink`类，用于将日志写入文件
 
 #### 细节
 

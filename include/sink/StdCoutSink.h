@@ -7,12 +7,12 @@
 namespace MiniLog {
     class StdCoutSink : public SinkBase {
     public:
-        virtual void log(const details::LogMsg &message) override {
+        void log(const details::LogMsg &message) override {
             fprintf(file_, "%s\n", message.get_str().c_str());
             fflush(file_);// flush every line to terminal
         }
 
-        virtual void flush() override {
+        void flush() override {
             fflush(file_);
         }
 

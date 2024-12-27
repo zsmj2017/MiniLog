@@ -32,11 +32,11 @@ namespace MiniLog {
         }
 
     public:
-        void register_logger(const std::string &name, std::shared_ptr<Logger> logger) {
-            if (loggers_.find(name) == loggers_.end()) {
-                loggers_[name] = std::move(logger);
+        void register_logger(std::shared_ptr<Logger> logger) {
+            if (loggers_.find(logger->name()) == loggers_.end()) {
+                loggers_[logger->name()] = std::move(logger);
             } else {
-                throw std::runtime_error("Logger with name " + name + " already exists");
+                throw std::runtime_error("Logger with name " + logger->name() + " already exists");
             }
         }
         std::shared_ptr<Logger> get_logger(const std::string &name) {

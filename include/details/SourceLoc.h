@@ -3,28 +3,28 @@
 
 #include <string>
 
-namespace MiniLog {
-    namespace Detail {
-        struct SourceLoc {
-            SourceLoc() = default;
 
-            SourceLoc(const char *filename, size_t line, const char *funcname)
-                : filename_{filename},
-                  line_{line},
-                  funcname_{funcname} {}
+namespace MiniLog::Detail {
+    struct SourceLoc {
+        SourceLoc() = default;
 
-            bool empty() const { return line_ == 0; }
+        SourceLoc(const char *filename, size_t line, const char *funcname)
+            : filename_{filename},
+              line_{line},
+              funcname_{funcname} {}
 
-            // TODO:: need a formatter to format the source location
-            std::string get_str() const {
-                return "[" + std::string(filename_) + ":" + std::to_string(line_) + "]" + "(" + std::string(funcname_) + ")";
-            }
+        bool empty() const { return line_ == 0; }
 
-            const char *filename_{nullptr};
-            size_t line_{0};
-            const char *funcname_{nullptr};
-        };
-    }// namespace Detail
-}// namespace MiniLog
+        // TODO:: need a formatter to format the source location
+        std::string get_str() const {
+            return "[" + std::string(filename_) + ":" + std::to_string(line_) + "]" + "(" + std::string(funcname_) + ")";
+        }
+
+        const char *filename_{nullptr};
+        size_t line_{0};
+        const char *funcname_{nullptr};
+    };
+}// namespace MiniLog::Detail
+
 
 #endif//MINILOG_SOURCELOC_H
