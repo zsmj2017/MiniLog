@@ -1,8 +1,8 @@
 #ifndef MINILOG_MINILOG_H
 #define MINILOG_MINILOG_H
 
-#include "Logger.h"
 #include "details/SourceLoc.h"
+#include "logger/LoggerRegister.h"
 #include <source_location>
 
 namespace MiniLog {
@@ -18,14 +18,14 @@ namespace MiniLog {
 
     template<class T>
     void log(const T &message) {
-        auto &logger = Logger::get_instance();
-        logger.log(message);
+        auto logger = LoggerRegister::get_instance().get_default_logger();
+        logger->log(message);
     }
 
     template<class T>
     void log(const Detail::SourceLoc &source_loc, const T &message) {
-        auto &logger = Logger::get_instance();
-        logger.log(source_loc, message);
+        auto logger = LoggerRegister::get_instance().get_default_logger();
+        logger->log(source_loc, message);
     }
 }// namespace MiniLog
 

@@ -1,6 +1,8 @@
 #ifndef MINILOG_SOURCELOC_H
 #define MINILOG_SOURCELOC_H
 
+#include <string>
+
 namespace MiniLog {
     namespace Detail {
         struct SourceLoc {
