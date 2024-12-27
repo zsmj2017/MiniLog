@@ -1,9 +1,9 @@
 #ifndef MINILOG_LOGGER_H
 #define MINILOG_LOGGER_H
 
-#include "StdCoutSink.h"
 #include "details/LogMsg.h"
 #include "details/SourceLoc.h"
+#include "sink/SinkBase.h"
 
 namespace MiniLog {
     class Logger {
@@ -17,10 +17,10 @@ namespace MiniLog {
               sinks_(begin, end) {}
 
         // Logger with single sink -> convert to range
-        Logger(std::string name, std::shared_ptr<StdCoutSink> single_sink)
+        Logger(std::string name, std::shared_ptr<SinkBase> single_sink)
             : Logger(std::move(name), {std::move(single_sink)}) {}
 
-        Logger(std::string name, std::initializer_list<std::shared_ptr<StdCoutSink>> sinks)
+        Logger(std::string name, std::initializer_list<std::shared_ptr<SinkBase>> sinks)
             : Logger(std::move(name), sinks.begin(), sinks.end()) {}
 
     public:// copy
@@ -65,7 +65,7 @@ namespace MiniLog {
 
     private:
         std::string name_;
-        std::vector<std::shared_ptr<StdCoutSink>> sinks_;
+        std::vector<std::shared_ptr<SinkBase>> sinks_;
     };
 }// namespace MiniLog
 

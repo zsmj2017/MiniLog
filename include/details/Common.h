@@ -1,7 +1,3 @@
-//
-// Created by 刘祥 on 2024/12/24.
-//
-
 #ifndef MINILOG_COMMON_H
 #define MINILOG_COMMON_H
 

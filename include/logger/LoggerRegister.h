@@ -2,6 +2,7 @@
 #define MINILOG_LOGGERREGISTER_H
 
 #include "Logger.h"
+#include "sink/StdCoutSink.h"
 #include <unordered_map>
 
 namespace MiniLog {
